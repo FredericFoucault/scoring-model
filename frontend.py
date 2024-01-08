@@ -4,8 +4,8 @@ import numpy as np
 import requests
 import json
 
-#data = requests.get('http://127.0.0.1:8080/data').text
-data = requests.get('https://appprediction-b8add0149604.herokuapp.com/data').text
+data = requests.get('http://127.0.0.1:8080/data').text
+#data = requests.get('https://appprediction-b8add0149604.herokuapp.com/data').text
 
 data = pd.DataFrame(json.loads(data))
 id_client = data.index.values
