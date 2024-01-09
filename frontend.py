@@ -4,8 +4,8 @@ import numpy as np
 import requests
 import json
 
-data = requests.get('http://127.0.0.1:8080/data').text
-#data = requests.get('https://appprediction-b8add0149604.herokuapp.com/data').text
+#data = requests.get('http://127.0.0.1:8080/data').text
+data = requests.get('https://appprediction-b8add0149604.herokuapp.com/data').text
 
 data = pd.DataFrame(json.loads(data))
 id_client = data.index.values
@@ -23,8 +23,11 @@ st.write('Vous avez selectionné le client avec l\'ID numéro',option)
 
 
 if option:
-    req = requests.get(f'http://127.0.0.1:8080/predict?ClientID={int(option)}')
-    resultat = req.json()
+    #req = requests.get(f'http://127.0.0.1:8080/predict?ClientID={int(option)}')
+    req = requests.get('https://appprediction-b8add0149604.herokuapp.com/predict?ClientID={int(option)}').text
+    st.write(req)
+    #resultat = req.json()
+    #resultat = json.loads(req)
     rec = resultat.get('prediction')
     inv_rec = 100 -rec
     if rec <= 50:

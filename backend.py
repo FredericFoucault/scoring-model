@@ -36,7 +36,7 @@ model = load_model()
 
 
 # prediction
-@app.route('/predict', methods=['GET'])
+@app.route('/predict', methods=['GET','POST'])
 def predict():
     # selection des données du client
     ClientID = request.args.get('ClientID')
@@ -47,4 +47,6 @@ def predict():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0",port=8080)
+    #app.run(host="0.0.0.0",port=8080)
+    app.run()
+
